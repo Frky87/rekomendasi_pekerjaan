@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* custom scroll bar */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::selection {
+    background: rgb(0, 123, 255, 0.3);
+}
+
+.content {
+    max-width: 1250px;
+    margin: auto;
+    padding: 0 30px;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    padding: 25px 0;
+    transition: all 0.3s ease;
+}
+
+.navbar.sticky {
+    background: #bad0e3;
+    padding: 10px 0;
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.icons {
+    mix-blend-mode: multiply;
+}
+
+.navbar .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo a {
+    color: #1d62ae;
+    font-size: 30px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.navbar .menu-list {
+    display: inline-flex;
+}
+
+.menu-list li {
+    list-style: none;
+}
+
+.lgn {
+    background-color: transparent;
+    border: 3px solid rgb(29, 98, 174);
+    padding: 12px 25px;
+    border-radius: 20px;
+    color: #fff;
+    transition: 0.5s;
+}
+
+.lgn:hover {
+    background-color: rgb(29, 98, 174);
+    border: 3px solid rgb(29, 98, 174);
+    color: #ffffff;
+}
+
+.rgs {
+    background-color: transparent;
+    border: 3px solid rgb(29, 98, 174);
+    padding: 12px 25px;
+    border-radius: 20px;
+    color: #fff;
+    transition: 0.5s;
+}
+
+.rgs:hover {
+    background-color: rgb(29, 98, 174);
+    border: 3px solid rgb(29, 98, 174);
+    color: #ffffff;
+}
+
+.menu-list li a {
+    color: #1d62ae;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.menu-list li a:hover {
+    color: #ffffff;
+}
+
+.banner {
+    position: relative;
+    background-image: url('Background_Landing.jpg');
+    /* Ganti dengan path gambar Anda */
+    background-size: cover;
+    height: 100vh;
+    /* Anda bisa mengubah ini sesuai kebutuhan */
+}
+
+.judul {
+    font-size: 20px;
+    color: rgb(29, 98, 174);
+    line-height: 26px;
+}
+
+p {
+    margin: 0px;
+    color: rgb(76, 76, 76);
+    font-family: MuseoSans;
+    font-weight: 600;
+    font-size: 21px;
+    letter-spacing: -0.1px;
+    line-height: 27px;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 50%;
+    /* Anda bisa mengubah ini sesuai kebutuhan */
+    padding: 40px;
+    color: rgb(76, 76, 76);
+    box-sizing: border-box;
+}
+
+.container h1 {
+    margin-bottom: 20px;
+}
+
+.container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.container form input[type="text"] {
+    background: url('search-line.png') no-repeat scroll 7px 7px;
+    /* Replace 'icon.png' with your icon path */
+    padding-left: 30px;
+    /* Adjust based on the size of your icon */
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.container form input[type="text"]:focus {
+    background-image: none;
+}
+
+.container form {
+    flex-direction: row;
+}
+
+.container form input[type="button"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #1d62ae;
+    color: #f4faff;
+    cursor: pointer;
+}
+
+.about {
+    padding: 30px 0;
+}
+
+.about .title {
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.about p {
+    padding-top: 20px;
+    text-align: justify;
+}
+
+.icon {
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+}
+
+.menu-list .cancel-btn {
+    position: absolute;
+    right: 30px;
+    top: 20px;
+}
+
+.footer {
+    background-color: #f4faff;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    position: flex;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer a {
+    color: #1b9bff;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #fff9f9;
+}
+
+@media (max-width: 1230px) {
+    .content {
+        padding: 0 60px;
+    }
+}
+
+@media screen and (min-width: 1120px) {
+     :root {
+        --h2-font-size: 1.5rem;
+        --small-font-size: .875rem;
+    }
+}
+
+@media (max-width: 1100px) {
+    .content {
+        padding: 0 40px;
+    }
+}
+
+@media (max-width: 900px) {
+    .content {
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 868px) {
+    body.disabled {
+        overflow: hidden;
+    }
+    .icon {
+        display: block;
+    }
+    .icon.hide {
+        display: none;
+    }
+    .navbar .menu-list {
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        max-width: 400px;
+        left: -100%;
+        top: 0px;
+        display: block;
+        padding: 40px 0;
+        text-align: center;
+        background: #f4faff;
+        transition: all 0.3s ease;
+    }
+    .navbar.show .menu-list {
+        left: 0%;
+    }
+    .navbar .menu-list li {
+        margin-top: 45px;
+    }
+    .navbar .menu-list li a {
+        font-size: 23px;
+        margin-left: -100%;
+        transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    .navbar.show .menu-list li a {
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 380px) {
+    .navbar .logo a {
+        font-size: 27px;
+    }
+}
