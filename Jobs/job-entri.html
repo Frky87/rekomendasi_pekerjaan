@@ -68,13 +68,28 @@
                     <input class="input" type="text" name="syarat" id="syarat" placeholder="Input Syarat Pekerjaan" />
                     <label for="job">Gaji Pekerjaan</label>
                     <input class="input" type="text" name="gaji" id="gaji" placeholder="Input Gaji Pekerjaan" />
-                    <button type="submit" class="btn btn-simpan" name="simpan">
+                    <button type="submit" class="btn btn-simpan" name="simpan" onclick="SimpanData()"> 
                         Simpan
                     </button>
                 </form>
             </div>
         </div>
     </section>
+    <script>
+        function SimpanData() {
+            alert("Data Berhasil Disimpan");
+        }
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".sidebarBtn");
+            sidebarBtn.onclick = function() {
+            sidebar.classList.toggle("active");
+        if(sidebar.classList.contains("active")){
+        sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+        }else
+        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    }
+
+    </script>
 </body>
 
 </html>

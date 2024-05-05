@@ -82,8 +82,8 @@
                             <button type="button" class="btn btn-edit">
                   <a href="#">Edit</a>
                 </button>
-                            <button type="button" class="btn btn-delete">
-                  <a href="#">Hapus</a>
+                            <button type="button" class="btn btn-delete" onclick="Hapus()">
+                  Hapus
                 </button>
                         </td>
                     </tr>
@@ -91,6 +91,16 @@
             </table>
         </div>
     </section>
+    <script>
+        function Hapus() {
+        if (confirm("Apakah Anda yakin menghapus data ini?")) {
+          alert("Data berhasil dihapus.");
+          // Kode untuk menghapus data
+        } else {
+          alert("Penghapusan data dibatalkan.");
+        }
+      }
+    </script>
 </body>
 
 </html>
