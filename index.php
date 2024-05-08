@@ -16,7 +16,7 @@
         <div class="content">
             <div class="logo" style="display: flex; align-items: center;">
                 <img src="./assets/jobjiv.png" alt="logo" width="100">
-                <a href="index.html">JobsJive</a>
+                <a href="index.php">JobsJive</a>
             </div>
             <ul class="menu-list">
                 <div class="icon cancel-btn">
@@ -25,8 +25,8 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Job search</a></li>
                 <li><a href="#">Career advice</a></li>
-                <li><a class="lgn" href="login.html">Login</a></li>
-                <li><a class="rgs" href="register.html">Register</a></li>
+                <li><a class="lgn" href="login.php">Login</a></li>
+                <li><a class="rgs" href="register.php">Register</a></li>
             </ul>
             <div class="icon menu-btn">
                 <i class="fas fa-bars"></i>

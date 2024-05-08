@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/assets/image/vas.png" />
-    <link rel="stylesheet" href="/css/admin.css" />
+    <link rel="stylesheet" href="css/admin.css" />
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/387774990c.js" crossorigin="anonymous"></script>
     <title>JobsJive</title>
@@ -20,25 +20,25 @@
         </div>
         <ul class="nav-links">
             <li>
-                <a href="dashboard.html" class="active">
+                <a href="dashboard.php" class="active">
                     <i class="fa-solid fa-border-all"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="./Employees/employee.html">
+                <a href="./Employees/employee.php">
                     <i class="fa-solid fa-users"></i>
                     <span class="links_name">Employe</span>
                 </a>
             </li>
             <li>
-                <a href="./Jobs/job.html">
+                <a href="./Jobs/job.php">
                     <i class="fa-solid fa-suitcase"></i>
                     <span class="links_name">Jobs</span>
                 </a>
             </li>
             <li>
-                <a href="/index.html" onclick="return confirm('Apakah kamu yakin ingin keluar?');">
+                <a href="/index.php" onclick="return confirm('Apakah kamu yakin ingin keluar?');">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <span class="links_name">Logout</span>
                 </a>

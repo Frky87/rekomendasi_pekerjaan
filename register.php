@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <!-- BEGIN: Mengubah form menjadi anak dari div -->
-        <form action="login.html" method="post">
+        <form action="login.php" method="post">
             <h2>Register</h2>
             <div class="input-container">
                 <i class="fa-regular fa-user"></i>
@@ -36,7 +36,7 @@
                 <i class="fa-regular fa-eye-slash"></i>
             </div>
             <div class="register-btn">
-                <a href="login.html">Register</a>
+                <a href="login.php">Register</a>
             </div>
             <br>
             <p>sign in with social networks</p>
