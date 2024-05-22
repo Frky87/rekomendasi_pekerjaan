@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li>
-                <a href="../index.php">
+                <a href="../logout.php">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <span class="links_name">Logout</span>
                 </a>
@@ -63,8 +63,8 @@
             <table class="table-data">
                 <thead>
                     <tr>
-                        <th>Nama Pekerjaan</th>
-                        <th scope="col" style="width: 10%">Nama Perusahaan</th>
+                        <th>Nama Perusahaan</th>
+                        <th scope="col" style="width: 10%">Nama Pekerjaan</th>
                         <th scope="col" style="width: 10%">Deskripsi</th>
                         <th scope="col" style="width: 10%">Syarat</th>
                         <th scope="col" style="width: 20%">Gaji</th>
@@ -73,8 +73,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>UI/UX Designer</td>
                         <td>PT. Astra Daihatsu Motor</td>
+                        <td>UI/UX Designer</td>
                         <td>Create a design for the company's branding</td>
                         <td>Final year student D3 - S1 (Major: DKV, Information Technology, or related majors)</td>
                         <td>Rp9.000.000</td>

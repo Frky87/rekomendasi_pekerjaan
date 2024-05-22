@@ -1,15 +1,22 @@
+<?php 
+	session_start();
+	if($_SESSION['username'] == null) {
+		header('location:../login.php');
+	}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/assets/image/vas.png" />
-    <link rel="stylesheet" href="/css/admin.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/387774990c.js" crossorigin="anonymous"></script>
     <title>JobsJive</title>
+    
 </head>
 
 <body>
@@ -38,7 +45,7 @@
                 </a>
             </li>
             <li>
-                <a href="../index.php">
+                <a href="../logout.php">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <span class="links_name">Logout</span>
                 </a>
@@ -59,40 +66,37 @@
         <div class="home-content">
             <h3>Input Data Karyawan</h3>
             <div class="form-login">
-                <form action="employee.php">
-                    <label for="employee">Nama Karyawan</label>
-                    <input class="input" type="text" name="name" id="name" placeholder="Input Nama Karyawan" />
-                    <label for="jabatan">Jabatan</label>
-                    <select class="input" name="jabatan" id="jabatan">
-              <option value="karyawan">Karyawan</option>
-              <option value="kasir">Kasir</option>
-              <option value="staff_gudang">Staff Gudang</option>
-              <option value="kebersihan">Kebersihan</option>
-            </select>
-                    <label for="jenis_kelamin">Jenis Kelamin</label>
-                    <select class="input" name="jenis_kelamin" id="jenis_kelamin">
-              <option value="laki_laki">Laki-laki</option>
-              <option value="perempuan">Perempuan</option>
-            </select>
-                    <label for="employee">No Telepon</label>
-                    <input class="input" type="text" name="noTelp" id="noTelp" placeholder="Input No Telepon" />
-                    <label for="employee">Alamat</label>
-                    <input class="input" type="text" name="alamat" id="alamat" placeholder="Input Alamat" />
-                    <label for="employee">Tempat Tanggal Lahir</label>
-                    <input class="input" type="text" name="ttl" id="ttl" placeholder="Input Tempat Tanggal Lahir" />
-                    <label for="status">Status Karyawan</label>
-                    <select class="input" name="status" id="status">
-              <option value="karyawan_tetap">Karyawan Tetap</option>
-              <option value="karyawan_kontrak">Karyawan Kontrak</option>
-              <option value="karyawan_magang">Karyawan Magang</option>
-            </select>
-                    <button type="submit" class="btn btn-simpan" name="simpan">
-              Simpan
-            </button>
-                </form>
-            </div>
-        </div>
-    </section>
+			<form action="employee-proses.php" method="post" enctype="multipart/form-data">
+                <label for="photo">Foto Karyawan</label><br>
+                <input type="file" name="photo" id="Photo" style="margin-bottom: 20px" /><br>
+                <label for="employee">Nama Karyawan</label>
+                <input class="input" type="text" name="nama" id="Nama_Lengkap" placeholder="Nama Karyawan" />
+                <label for="employee">Jenis Kelamin</label>
+                <input class="input" type="text" name="jk" id="Jenis_Kelamin" placeholder="Jenis Kelamin" />
+                <label for="employee">Telp Karyawan</label>
+                <input class="input" type="text" name="telp" id="No_Telp" placeholder="Telp Karyawan" />
+                <label for="employee">Alamat Karyawan</label>
+                <input class="input" type="text" name="alamat" id="Alamat" placeholder="Alamat" />
+                <label for="employee">Pendidikan Terakhir</label>
+                <input class="input" type="text" name="pendidikan" id="Pendidikan_Terakhir" placeholder="Pendidikan" />
+                <label for="employee">Keahlian</label>
+                <input class="input" type="text" name="keahlian" id="Keahlian" placeholder="Keahlian" />
+                <button type="submit" class="btn btn-simpan" name="simpan">
+                    Simpan
+                </button>
+			</form>
+			</div>
+		</div>
+	</section>
+    <script>
+		let sidebar = document.querySelector(".sidebar");
+		let sidebarBtn = document.querySelector(".sidebarBtn");
+		sidebarBtn.onclick = function () {
+			sidebar.classList.toggle("active");
+			if (sidebar.classList.contains("active")) {
+				sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+			} else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+		};
+	</script>
 </body>
-
 </html>

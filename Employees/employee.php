@@ -1,3 +1,9 @@
+<?php
+session_start();
+if ($_SESSION['username'] == null) {
+	header('location:../login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +44,7 @@
                 </a>
             </li>
             <li>
-                <a href="../index.php">
+                <a href="../logout.php">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <span class="links_name">Logout</span>
                 </a>
@@ -63,38 +69,68 @@
             <table class="table-data">
                 <thead>
                     <tr>
-                        <th>Nama Karyawan</th>
-                        <th scope="col" style="width: 10%">Jabatan</th>
+                        <th scope="col" style="width: 20%">Photo</th>
+                        <th>Nama</th>
                         <th scope="col" style="width: 5%">Jenis Kelamin</th>
-                        <th scope="col" style="width: 10%">No Telepon</th>
-                        <th scope="col" style="width: 20%">Alamat</th>
-                        <th scope="col" style="width: 20%">TTL</th>
-                        <th scope="col" style="width: 10%">Status Karyawan</th>
+                        <th scope="col" style="width: 10%">No Telp</th>
+                        <th scope="col" style="width: 10%">Alamat</th>
+                        <th scope="col" style="width: 20%">Pendidikan Terakhir</th>
+                        <th scope="col" style="width: 20%">Keahlian</th>
                         <th scope="col" style="width: 30%">Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                <?php
+					include '../koneksi.php';
+					$sql = "SELECT * FROM employee";
+					$result = mysqli_query($koneksi, $sql);
+					if (mysqli_num_rows($result) == 0) {
+						echo "
+                            <tr>
+                                <td colspan='10' align='center'>
+                                        Data Kosong
+                                        </td>
+                            </tr>
+                        ";
+					}
+					while ($data = mysqli_fetch_assoc($result)) {
+						echo "
                     <tr>
-                        <td>Yuliana</td>
-                        <td>Karyawati</td>
-                        <td>Perempuan</td>
-                        <td>08456123789</td>
-                        <td>Jl. Bunga</td>
-                        <td>Malang, 7 September 1990</td>
-                        <td>Kontrak</td>
-                        <td>
-                            <button type="button" class="btn btn-edit">
-                  <a href="#">Edit</a>
-                </button>
-                            <button type="button" class="btn btn-delete">
-                  <a href="#">Hapus</a>
-                </button>
-                        </td>
+                      <td>
+                        <img src='../assets/$data[Photo]' width='200px'>
+                      </td>
+                      <td>$data[Nama_Lengkap]</td>
+                      <td>$data[Jenis_Kelamin]</td>
+                      <td>$data[No_Telp]</td>
+                      <td>$data[Alamat]</td>
+                      <td>$data[Pendidikan_Terakhir]</td>
+					  <td>$data[Keahlian]</td>
+                      <td >
+                        <a class='btn-edit' href=employee-edit.php?ID_Employee=$data[ID_Employee]>
+                               Edit
+                        </a> | 
+                        <a class='btn-delete' href=employee-delete.php?ID_Employee=$data[ID_Employee]>
+                            Hapus
+                        </a>
+                      </td>
                     </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+                  ";
+					}
+					?>
+				</tbody>
+			</table>
+		</div>
+	</section>
+	<script>
+		let sidebar = document.querySelector(".sidebar");
+		let sidebarBtn = document.querySelector(".sidebarBtn");
+		sidebarBtn.onclick = function() {
+			sidebar.classList.toggle("active");
+			if (sidebar.classList.contains("active")) {
+				sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+			} else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+		};
+	</script>
 </body>
 
 </html>
