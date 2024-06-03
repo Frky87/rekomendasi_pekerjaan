@@ -1,9 +1,3 @@
-<?php
-session_start();
-if ($_SESSION['username'] == null) {
-	header('location:../login.php');
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +28,7 @@ if ($_SESSION['username'] == null) {
             <li>
                 <a href="employee.php" class="active">
                     <i class="fa-solid fa-users"></i>
-                    <span class="links_name">Employe</span>
+                    <span class="links_name">Employee</span>
                 </a>
             </li>
             <li>
@@ -60,12 +54,16 @@ if ($_SESSION['username'] == null) {
                 <span class="admin_name">JobsJive</span>
             </div>
         </nav>
-        <!-- Isi dari halaman -->
+        <!-- Main content -->
         <div class="home-content">
             <h3>Data Karyawan</h3>
             <button type="button" class="btn btn-tambah">
-          <a href="employee-entri.php">Tambah Data</a>
-        </button>
+                <a href="employee-entri.php">Tambah Data</a>
+            </button>
+            <button type="button" class="btn btn-cetak">
+                <a href="employee-pdf.php" target="_blank">Cetak PDF</a>
+            </button>
+
             <table class="table-data">
                 <thead>
                     <tr>
@@ -80,57 +78,50 @@ if ($_SESSION['username'] == null) {
                     </tr>
                 </thead>
                 <tbody>
-                <?php
-					include '../koneksi.php';
-					$sql = "SELECT * FROM employee";
-					$result = mysqli_query($koneksi, $sql);
-					if (mysqli_num_rows($result) == 0) {
-						echo "
+                    <?php
+                    include '../koneksi.php';
+                    $sql = "SELECT * FROM employee";
+                    $result = mysqli_query($koneksi, $sql);
+                    if (mysqli_num_rows($result) == 0) {
+                        echo "
                             <tr>
-                                <td colspan='10' align='center'>
-                                        Data Kosong
-                                        </td>
+                                <td colspan='8' align='center'>Data Kosong</td>
                             </tr>
                         ";
-					}
-					while ($data = mysqli_fetch_assoc($result)) {
-						echo "
-                    <tr>
-                      <td>
-                        <img src='../assets/$data[Photo]' width='200px'>
-                      </td>
-                      <td>$data[Nama_Lengkap]</td>
-                      <td>$data[Jenis_Kelamin]</td>
-                      <td>$data[No_Telp]</td>
-                      <td>$data[Alamat]</td>
-                      <td>$data[Pendidikan_Terakhir]</td>
-					  <td>$data[Keahlian]</td>
-                      <td >
-                        <a class='btn-edit' href=employee-edit.php?ID_Employee=$data[ID_Employee]>
-                               Edit
-                        </a> | 
-                        <a class='btn-delete' href=employee-delete.php?ID_Employee=$data[ID_Employee]>
-                            Hapus
-                        </a>
-                      </td>
-                    </tr>
-                  ";
-					}
-					?>
-				</tbody>
-			</table>
-		</div>
-	</section>
-	<script>
-		let sidebar = document.querySelector(".sidebar");
-		let sidebarBtn = document.querySelector(".sidebarBtn");
-		sidebarBtn.onclick = function() {
-			sidebar.classList.toggle("active");
-			if (sidebar.classList.contains("active")) {
-				sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-			} else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-		};
-	</script>
+                    } else {
+                        while ($data = mysqli_fetch_assoc($result)) {
+                            echo "
+                                <tr>
+                                    <td><img src='../assets/{$data['Photo']}' width='200px'></td>
+                                    <td>" . htmlspecialchars($data['Nama_Lengkap']) . "</td>
+                                    <td>" . htmlspecialchars($data['Jenis_Kelamin']) . "</td>
+                                    <td>" . htmlspecialchars($data['No_Telp']) . "</td>
+                                    <td>" . htmlspecialchars($data['Alamat']) . "</td>
+                                    <td>" . htmlspecialchars($data['Pendidikan_Terakhir']) . "</td>
+                                    <td>" . htmlspecialchars($data['Keahlian']) . "</td>
+                                    <td>
+                                        <a class='btn-edit' href='employee-edit.php?ID_Employee=" . $data['ID_Employee'] . "'>Edit</a> | 
+                                        <a class='btn-delete' href='employee-delete.php?ID_Employee=" . $data['ID_Employee'] . "' onclick='return confirm(\"Apakah Anda yakin ingin menghapus data ini?\");'>Hapus</a>
+                                    </td>
+                                </tr>
+                            ";
+                        }
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".sidebarBtn");
+        sidebarBtn.onclick = function() {
+            sidebar.classList.toggle("active");
+            if (sidebar.classList.contains("active")) {
+                sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+            } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+        };
+    </script>
 </body>
 
 </html>

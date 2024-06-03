@@ -1,6 +1,12 @@
+<?php 
+    session_start();
+    if (!isset($_SESSION['username'])) {
+        header('Location: ../login.php');
+        exit();
+    }
+?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,7 +17,6 @@
     <script src="https://kit.fontawesome.com/387774990c.js" crossorigin="anonymous"></script>
     <title>JobsJive</title>
 </head>
-
 <body>
     <div class="sidebar">
         <div class="logo-details" style="align-items: center;">
@@ -28,7 +33,7 @@
             <li>
                 <a href="../Employees/employee.php">
                     <i class="fa-solid fa-users"></i>
-                    <span class="links_name">Employe</span>
+                    <span class="links_name">Employee</span>
                 </a>
             </li>
             <li>
@@ -57,39 +62,33 @@
 
         <!-- Isi dari halaman -->
         <div class="home-content">
-            <h3>Input Data Job</h3>
+            <h3>Input Data Perusahaan</h3>
             <div class="form-login">
-                <form action="job.php">
-                    <label for="job">Nama Pekerjaan</label>
-                    <input class="input" type="text" name="name" id="name" placeholder="Input Nama Pekerjaan" />
-                    <label for="job">Deskripsi</label>
-                    <input class="input" type="text" name="desc" id="desc" placeholder="Input Deskripsi Pekerjaan" />
-                    <label for="job">Syarat Pekerjaan</label>
-                    <input class="input" type="text" name="syarat" id="syarat" placeholder="Input Syarat Pekerjaan" />
-                    <label for="job">Gaji Pekerjaan</label>
-                    <input class="input" type="text" name="gaji" id="gaji" placeholder="Input Gaji Pekerjaan" />
-                    <button type="submit" class="btn btn-simpan" name="simpan" onclick="SimpanData()"> 
-                        Simpan
-                    </button>
+                <form action="job-proses.php" method="post" enctype="multipart/form-data">
+                    <label for="Nama_Perusahaan">Nama Perusahaan</label>
+                    <input class="input" type="text" name="Nama_Perusahaan" id="Nama_Perusahaan" placeholder="Nama Perusahaan" required />
+                    <label for="Nama_Pekerjaan">Nama Pekerjaan</label>
+                    <input class="input" type="text" name="Nama_Pekerjaan" id="Nama_Pekerjaan" placeholder="Nama Pekerjaan" required />
+                    <label for="Deskripsi">Deskripsi</label>
+                    <input class="input" type="text" name="Deskripsi" id="Deskripsi" placeholder="Deskripsi" required />
+                    <label for="Syarat">Syarat</label>
+                    <input class="input" type="text" name="Syarat" id="Syarat" placeholder="Syarat" required />
+                    <label for="Gaji">Gaji</label>
+                    <input class="input" type="number" name="Gaji" id="Gaji" placeholder="Gaji" required />
+                    <button type="submit" class="btn btn-simpan" name="simpan">Simpan</button>
                 </form>
             </div>
         </div>
     </section>
     <script>
-        function SimpanData() {
-            alert("Data Berhasil Disimpan");
-        }
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".sidebarBtn");
-            sidebarBtn.onclick = function() {
+        sidebarBtn.onclick = function () {
             sidebar.classList.toggle("active");
-        if(sidebar.classList.contains("active")){
-        sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-        }else
-        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-    }
-
+            if (sidebar.classList.contains("active")) {
+                sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+            } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+        };
     </script>
 </body>
-
 </html>
